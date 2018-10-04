@@ -6,7 +6,7 @@ pipeline {
                 withSonarQubeEnv('SonarTestServer') {
                   bat "mvn clean install sonar:sonar"
 				}
-			}
+			  }
 		}
                       
 	}
