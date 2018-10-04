@@ -4,7 +4,7 @@ pipeline {
            stage ('Static Analysis'){
               steps{
                 withSonarQubeEnv('Bluesky Sonar Server') {
-                  sh "mvn sonar:sonar -DBUILD_NUMBER=${env.BUILD_NUMBER}"
+                  sh "mvn sonar:sonar"
 				}
 			}
 		}
