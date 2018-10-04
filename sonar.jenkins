@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+     stages {
+           stage ('Static Analysis'){
+              steps{
+                withSonarQubeEnv('Bluesky Sonar Server') {
+                  sh "mvn sonar:sonar"
+				}
+			}
+		}
+                      
+	}
+}
