@@ -3,7 +3,7 @@ pipeline {
      stages {
            stage ('Static Analysis'){
               steps{
-                withSonarQubeEnv('Bluesky Sonar Server') {
+                withSonarQubeEnv('SonarTestServer') {
                   sh "mvn sonar:sonar"
 				}
 			}
