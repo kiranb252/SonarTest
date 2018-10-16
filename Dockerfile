@@ -23,7 +23,7 @@ ENV M2_HOME /usr/share/maven
 ADD deps.txt /builder/deps.txt
 ADD resolve-deps.sh /builder/resolve-deps.sh
 
-RUN /builder/resolve-deps.sh
+RUN ["chmod", "+x", "/builder/resolve-deps.sh"]
 
 ENTRYPOINT ["mvn"]
 
