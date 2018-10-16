@@ -2,5 +2,5 @@ steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['clean install sonar:sonar']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/TestSonar', '.']
-images: ['gcr.io/$PROJECT_ID/TestSonar']
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/testsonar', '.']
+images: ['gcr.io/$PROJECT_ID/testsonar']
