@@ -1,3 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['clean install sonar:sonar']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/spring-boot', '.']
+images: ['gcr.io/$PROJECT_ID/spring-boot']
