@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+	parameters {
+        string(defaultValue: '0.0.1', description: 'Should pick the version from pom.xml', name: 'SNAPSHOT_VERSION')
+    }
+    stages {
+        stage ('Publish Stage') {
+            steps {
+                 script{
+                            pom = readMavenPom file: 'pom.xml'
+                            echo pom.version
+                  }
+            }
+        }
+    }
+}
