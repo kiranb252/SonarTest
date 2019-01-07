@@ -7,8 +7,7 @@ pipeline {
                 script {
             		def pom = readMavenPom file: 'pom.xml'
 			def (releaseVersion, shacommit) = pom.version.split('-')
-			env.releaseVersion=releaseVersion
-			echo env.releaseVersion
+			echo releaseVersion
                 }
             }
         }
@@ -16,7 +15,7 @@ pipeline {
 	stage ('test') {
             steps {
 			
-               sh "echo ${env.releaseVersion}"
+               sh "echo ${releaseVersion}"
             }
         }
     }
