@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage ('Prepare') {
+            steps {
+                sh "docker rm -f \$(docker ps -aq --filter 'status=exited' --filter 'status=created' --filter 'status=dead') || echo 'No Dangling Containers'"
+                sh "docker volume rm \$(docker volume ls -qf dangling=true) || echo 'No Dangling Volumes'"
+				
+                script {
+                    utils = load 'ci/utils.groovy'
+                    skipBackendTests = params.skipBackendTests || !utils.isBackendChangeSinceLastSuccess()
+					releaseVersion = readMavenPom file: 'pom.xml'
+					echo releaseVersion
+                }
+            }
+        }
+    }
+}
